@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+/* custom */
+/* .nav-item a:hover {
+   color: red !important;
+} */
+
+.sidebar ul li:hover {
+  background-color: gray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar ul li a:hover {
+  color: white !important;
+}
+
+.active {
+  background-color: gray;
+  border-radius: 5px;
+  color: white !important;
+}
