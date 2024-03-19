@@ -52,8 +52,20 @@
   color: white !important;
 }
 
-.active {
+.sidebar .active {
   background-color: gray;
   border-radius: 5px;
   color: white !important;
+}
+
+.justify-icon {
+  margin-left: 5px;
+}
+
+.nav-margin {
+  margin-top: 5px;
+}
+
+.nav-margin a {
+  margin-left: 5px;
 }

@@ -3,31 +3,19 @@ import * as echarts from "echarts";
 
 const EChartsExample = () => {
   const chartRef = useRef(null);
+  let chartInstance = null;
 
   useEffect(() => {
+    const resizeChart = () => {
+      if (chartInstance) {
+        chartInstance.resize();
+      }
+    };
+
     // Initialize ECharts instance
-    const chart = echarts.init(chartRef.current);
+    chartInstance = echarts.init(chartRef.current);
 
     // Specify chart configuration
-    // const options = {
-    //   title: {
-    //     text: "Example Chart",
-    //   },
-    //   xAxis: {
-    //     type: "category",
-    //     data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    //   },
-    //   yAxis: {
-    //     type: "value",
-    //   },
-    //   series: [
-    //     {
-    //       data: [120, 200, 150, 80, 70, 110, 130],
-    //       type: "line",
-    //     },
-    //   ],
-    // };
-
     const options = {
       title: {
         text: "Stacked Line",
@@ -92,13 +80,17 @@ const EChartsExample = () => {
     };
 
     // Set options
-    chart.setOption(options);
+    chartInstance.setOption(options);
+
+    // Resize chart on window resize
+    window.addEventListener("resize", resizeChart);
 
     // Clean up
     return () => {
-      chart.dispose();
+      window.removeEventListener("resize", resizeChart);
+      chartInstance.dispose();
     };
-  }, []); // Empty dependency array means this effect runs once after the first render
+  }, []);
 
   return <div ref={chartRef} style={{ width: "100%", height: "400px" }} />;
 };

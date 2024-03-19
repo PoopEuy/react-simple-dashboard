@@ -1,40 +1,58 @@
-import logo from "./logo.svg";
-import React from "react";
+// import logo from "./logo.svg";
+import Navbar from "./component/Navbar";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Sidebar from "./component/Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./component/Navbar";
 import Home from "./component/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Users from "./component/Users";
+import Orders from "./component/Orders";
 
 function App() {
+  const [toggle, setToggle] = useState(false);
+  function Toggle() {
+    setToggle(!toggle);
+  }
+
+  useEffect(() => {
+    const handleSize = () => {
+      if (window.innerWidth > 768) {
+        setToggle(false);
+      }
+    };
+
+    window.addEventListener("resize", handleSize);
+
+    return () => {
+      window.removeEventListener("resize", handleSize);
+    };
+  }, []);
+
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    <BrowserRouter>
+      <div className="d-flex">
+        <div className={toggle ? "d-none" : "w-auto position-fixed"}>
+          <Sidebar />
+        </div>
 
-    <div className="d-flex">
-      <div className="w-auto">
-        <Sidebar />
-      </div>
+        <div className={toggle ? "d-none" : "invisible"}>
+          <Sidebar />
+        </div>
 
-      <div className="col">
-        <Navbar />
-        <Home />
+        <div className="col overflow-auto">
+          <Navbar Toggle={Toggle} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/orders" element={<Orders />} />
+          </Routes>
+
+          {/* <Navbar />
+        <Home /> */}
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
