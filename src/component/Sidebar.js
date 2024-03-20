@@ -53,8 +53,8 @@ function Sidebar() {
 
           <Link to="/form">
             <li
-              className={active === 3 ? "active nav-item p-2" : "nav-item p-2"}
-              onClick={(e) => setActive(3)}
+              className={active === 4 ? "active nav-item p-2" : "nav-item p-2"}
+              onClick={(e) => setActive(4)}
             >
               <span className="text-white text-decoration-none text-white p-1">
                 <i className="bi bi-book me-3 fs-4"></i>
@@ -64,8 +64,8 @@ function Sidebar() {
           </Link>
 
           <li
-            className={active === 4 ? "active nav-item p-2" : "nav-item p-2"}
-            onClick={(e) => setActive(4)}
+            className={active === 5 ? "active nav-item p-2" : "nav-item p-2"}
+            onClick={(e) => setActive(5)}
           >
             <span className="text-white text-decoration-none text-white p-1">
               <i className="bi bi-grid me-3 fs-4"></i>
