@@ -8,6 +8,7 @@ import Home from "./component/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Users from "./component/Users";
 import Orders from "./component/Orders";
+import Form from "./component/Form";
 
 function App() {
   const [toggle, setToggle] = useState(false);
@@ -46,6 +47,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/users" element={<Users />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/form" element={<Form />} />
           </Routes>
 
           {/* <Navbar />

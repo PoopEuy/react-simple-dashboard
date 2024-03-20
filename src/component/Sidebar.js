@@ -51,6 +51,18 @@ function Sidebar() {
             </li>
           </Link>
 
+          <Link to="/form">
+            <li
+              className={active === 3 ? "active nav-item p-2" : "nav-item p-2"}
+              onClick={(e) => setActive(3)}
+            >
+              <span className="text-white text-decoration-none text-white p-1">
+                <i className="bi bi-book me-3 fs-4"></i>
+                <span>Form</span>
+              </span>
+            </li>
+          </Link>
+
           <li
             className={active === 4 ? "active nav-item p-2" : "nav-item p-2"}
             onClick={(e) => setActive(4)}
